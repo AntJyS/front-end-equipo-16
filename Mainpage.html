@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supermarket Homepage</title>
+    <title>GoMarket</title>
     <style>
         body {
             margin: 0;
@@ -19,9 +19,22 @@
             background-position: right;
         }
 
+        .menu-logo {
+            height: 30px; /* Adjust this value to change the logo size */
+            margin-right: 1rem; /* Add some space between logos */
+            cursor: pointer; /* Change the cursor to a pointer when hovering over the logo */
+        }
+
+        .menu-icon {
+            font-size: 1.5rem; /* Adjust this value to change the icon size */
+            margin-right: 1rem; /* Add some space between icons */
+            cursor: pointer; /* Change the cursor to a pointer when hovering over the icon */
+            color: white; /* Set the icon color */
+        }
+
         .orange-square {
             position: absolute;
-            top: 12%;
+            top: 10%;
             left: 0;
             width: 60%;
             height: 80%;
@@ -32,16 +45,17 @@
             align-items: center;
             padding: 1rem;
             box-sizing: border-box;
+            
         }
 
         .orange-square img {
-            height: 500px; /* Adjust this value to change the logo size inside the orange square */
+            height: 350px; 
             margin-bottom: 1rem;
         }
 
         .orange-square .phrase {
             color: white;
-            font-size: 1.5rem; /* Adjust this value to change the font size of the phrase */
+            font-size: 1.5rem; 
             text-align: center;
             margin-bottom: 1rem;
         }
@@ -49,18 +63,20 @@
         .orange-square .button-container {
         display: flex;
         align-items: center;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;  
         }
 
         .orange-square .button {
-            display: inline-block;
-            background-color: orange;
-            color: white;
-            border-radius: 50px;
-            padding: 0.5rem 1rem;
-            font-size: 1rem;
-            text-decoration: none;
-            margin-top: 0;
-            order: 3;
+        display: inline-block;
+        background-color: orange;
+        color: white;
+        border-radius: 50px;
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        text-decoration: none;
+        margin-top: 0;
+
         }
 
         .orange-square .button-container span {
@@ -72,10 +88,16 @@
         .orange-square .text-button {
         font-size: 1rem;
         font-weight: bold;
-        color: #FFFFFF; /* Change the color of the text */
-        font-family: Arial, sans-serif; /* Change the font family of the text */
+        color: #FFFFFF; 
+        font-family: Arial, sans-serif; 
         margin-left: 0.5rem;
-        text-transform: uppercase; /* Change the text to uppercase */
+        text-transform: uppercase;
+        }
+
+        .top-menu-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .top-menu {
@@ -86,12 +108,12 @@
             height: 50px;
             width: 70%;
             padding: 0;
-            margin: 0 auto; /* Center the top menu */
-            position: absolute; /* Position the menu on top of the background */
+            margin: 0 auto; 
+            position: absolute; 
             top: 0;
             left: 50%;
             transform: translateX(-50%);
-            z-index: 2; /* Ensure the top menu is above other elements */
+            z-index: 2; 
         }
 
         .top-menu a {
@@ -99,6 +121,7 @@
             text-decoration: none;
             font-weight: bold;
             padding: 0 1rem;
+            margin: 0 4px;
         }
 
         .logo {
@@ -130,19 +153,77 @@
             cursor: pointer;
         }
 
+        .first-slider {
+            width: 66.66%; /* Adjust this value to take two-thirds of the screen */
+            border-top-right-radius: 20px; /* Add this line to create a rounded top-right corner */
+            overflow: hidden; /* Add this line to hide the slider content outside the rounded corner */
+        }
+
+        .first-slider::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: inherit; /* Inherit the background color of the parent element */
+            z-index: -1; /* Place the background below the slider content */
+            border-top-right-radius: inherit; /* Inherit the border-radius of the parent element */
+        }
+
+        .container {
+            display: flex; 
+            height: 100vh;
+            width: 100%;
+        }
+
+
+        .slider-container {
+            position: relative;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            border-top-right-radius: 20px;
+            overflow: hidden;
+        }
+
+        .slider-container-1 {
+            width: 100%;
+            height: 20vh;
+            background-image: url('Images/supermarkethd.jpg');
+            background-size: cover;
+            background-position: center; /* 2/3rds of the screen width */
+        }
+
+        .slider-container-2 {
+            width: 100%; /* Entire screen width */
+        }
+
         .slider-container::-webkit-scrollbar {
             display: none;
         }
 
-        .slider-container {
-            position: relative;
-            -ms-overflow-style: none; /* IE and Edge */
-            scrollbar-width: none; /* Firefox */
+        .right-space {
+            width: 100%; /* Remaining width on the right of the first slider */
+            height: 100vh; /* Full viewport height */
+            background-color: orange; /* Replace with your desired background color or use a background-image */
+            float: left; /* Aligns the div to the left, next to the first slider */
         }
+
+
+        .products-slider {
+            display: flex;
+            overflow-x: auto; 
+            scroll-snap-type: x mandatory;
+            scroll-padding: 0 10%;
+            scroll-behavior: smooth;
+            width: 100%;
+            padding: 2rem 0;
+        }
+
 
         .slider-track-wrapper {
             width: 100%;
-            overflow: hidden; /* Hide the scrollbars */
+            overflow: hidden; 
             position: relative;
         }
 
@@ -166,46 +247,42 @@
         }
 
         .slider {
-        display: flex;
-        overflow-x: auto; /* Change this value */
-        scroll-snap-type: x mandatory;
-        scroll-padding: 0 50%;
-        scroll-behavior: smooth;
-        width: 100%;
-        padding: 2rem 0;
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-padding: 0 50%;
+            scroll-behavior: smooth;
+            width: 100%;
+            padding: 2rem 0;
         }
 
-        .products-slider {
-        display: flex;
-        overflow-x: auto; /* Change this value */
-        scroll-snap-type: x mandatory;
-        scroll-padding: 0 10%;
-        scroll-behavior: smooth;
-        width: 100%;
-        padding: 2rem 0;
-        }
+        
 
         .slider section {
-            flex: 0 0 33.33%;
+            background-image: url("Images/supermarkethd.jpg");
+            background-size: cover;
+            flex: 0 0 100%;
             scroll-snap-align: center;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 2rem;
+            font-size: 3rem;
             padding: 1rem;
             box-sizing: border-box;
+            color: #201E50;
         }
 
         .selected-text {
             font-size: 1.5rem;
-            text-align: center;
-            margin: 2rem 0;
+            text-align: bottom left;
+            margin: 0.5rem;
         }
 
         .show-more-btn {
-            display: block;
+            display: inline-block;
+            float: right;
             margin: 0 auto;
-            padding: 0.5rem 1rem;
+            padding: 0.25rem 1rem;
             background-color: #FF6C26;
             color: white;
             font-weight: bold;
@@ -252,16 +329,18 @@
         <div class="logo">
             <img src="Images/Logo.png" alt="Logo">
         </div>
-        <a href="#">HOME</a>
-        <a href="#">PRODUCTS</a>
-        <a href="#">NEW PRODUCTS</a>
-        <a href="#">ABOUT US</a>
-        <a href="#">CONTACT US</a>
-        <div class="menu-buttons">
-            <button class="menu-button">Button 1</button>
-            <button class="menu-button">Button 2</button>
-            <button class="menu-button">Button 3</button>
+        <div class="top-menu-links">
+            <a href="#">HOME</a>
+            <a href="#">PRODUCTS</a>
+            <a href="#">NEW PRODUCTS</a>
+            <a href="#">ABOUT US</a>
+            <a href="#">CONTACT US</a>
         </div>
+        <div class="menu-buttons">
+            <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="width: 1.5rem; height: 1.5rem;"><path fill="white" d="M505 442.7L405.3 1.7c-2.6-11.6-16.4-17.6-27.6-10.6L25.6 223.6c-11.6 7.2-15.5 23.1-9.9 35l99.7 441c2.6 11.6 16.4 17.6 27.6 10.6l352.1-232.5c11.5-7.3 15.4-23.2 9.9-35zM361.1 226.4l-83.5 56.5 34.5 102.5-100.1-75.4-100.1 75.4 34.5-102.5-83.5-56.5H170l66.9-19.8-27.4-91.4 55.2 38.8 55.2-38.8-27.4 91.4 66.9 19.8h103.1z"/></svg>
+            <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" style="width: 1.5rem; height: 1.5rem;"><path fill="white" d="M224 256c52.9 0 96-43.1 96-96s-43.1-96-96-96-96 43.1-96 96 43.1 96 96 96zm128 32h-55.1c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16H96c-53 0-96 43-96 96v16c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-16c0-53-43-96-96-96z"/></svg>
+            <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" style="width: 1.5rem; height: 1.5rem;"><path fill="white" d="M528 64H16C7.164 64 0 71.164 0 80v352c0 8.836 7.164 16 16 16h512c8.836 0 16-7.164 16-16V80c0-8.836-7.164-16-16-16zm-32 336H48V112h448v288zM192 144c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm160 0c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48z"/></svg>
+        </div>        
     </nav>
 
     <div class="header-image">
@@ -276,18 +355,14 @@
     </div>
   
 
-    <div class="slider-container">
+    <div class="slider-container slider-container-1">
         <div class="slider">
-        <section>1</section>
-        <section>2</section>
-        <section>3</section>
-        <section>4</section>
-        <section>5</section>
-        <section>6</section>
-        <section>7</section>
-        <section>8</section>
-        <section>9</section>
-    </div>
+            <section>Fresh Products Guaranteed</section>
+            <section>Free Shipping</section>
+            <section>Customers Satisfied</section>
+            <section>Multiple Discouts</section>
+            <section>And much more...</section>
+        </div>
     <button class="slider-button slider-button-left" onclick="slide('slider', -1)">&#10094;</button>
         <button class="slider-button slider-button-right" onclick="slide('slider', 1)">&#10095;</button>
     </div>
@@ -296,51 +371,51 @@
 
     <a href="#" class="show-more-btn">Show more</a>
 
-    <div class="slider-container">
+    <div class="slider-container slider-container-2">
         <div class="products-slider">    
             <div class="product">
-                <img src="your-image-source-here" alt="Product 1">
-                <p class="product-name">Product 1</p>
+                <img src="Images/bebidas.jpeg" alt="Product 1">
+                <p class="product-name">Bebidas</p>
                 <p class="product-price">$9.99</p>
             </div>
             <div class="product">
-                <img src="your-image-source-here" alt="Product 2">
-                <p class="product-name">Product 2</p>
+                <img src="Images/duraznos.webp" alt="Product 2">
+                <p class="product-name">Duraznos</p>
                 <p class="product-price">$12.99</p>
             </div>
             <div class="product">
-                <img src="your-image-source-here" alt="Product 3">
-                <p class="product-name">Product 3</p>
+                <img src="Images/frutas.jpeg" alt="Product 3">
+                <p class="product-name">Promociones de Frutas</p>
                 <p class="product-price">$7.99</p>
             </div>
             <div class="product">
-                <img src="your-image-source-here" alt="Product 4">
-                <p class="product-name">Product 4</p>
+                <img src="Images/frutos secos.jpeg" alt="Product 4">
+                <p class="product-name">Frutos Secos</p>
                 <p class="product-price">$15.99</p>
             </div>
             <div class="product">
-                <img src="your-image-source-here" alt="Product 5">
-                <p class="product-name">Product 5</p>
+                <img src="Images/grapes.jpeg" alt="Product 5">
+                <p class="product-name">Arándanos</p>
                 <p class="product-price">$8.99</p>
             </div>
             <div class="product">
-                <img src="your-image-source-here" alt="Product 6">
-                <p class="product-name">Product 6</p>
+                <img src="Images/limonez.webp" alt="Product 6">
+                <p class="product-name">Limones</p>
                 <p class="product-price">$11.99</p>
             </div>
             <div class="product">
-                <img src="your-image-source-here" alt="Product 7">
-                <p class="product-name">Product 7</p>
+                <img src="Images/verduras.jpeg" alt="Product 7">
+                <p class="product-name">Verduras</p>
                 <p class="product-price">$10.99</p>
             </div>
             <div class="product">
-                <img src="your-image-source-here" alt="Product 8">
-                <p class="product-name">Product 8</p>
+                <img src="Images/Medicamentos.webp" alt="Product 8">
+                <p class="product-name">Medicamentos</p>
                 <p class="product-price">$14.99</p>
             </div>
             <div class="product">
-                <img src="your-image-source-here" alt="Product 9">
-                <p class="product-name">Product 9</p>
+                <img src="Images/mario-luigi-yoschi-figures-163036.jpeg" alt="Product 9">
+                <p class="product-name">Entretenimiento</p>
                 <p class="product-price">$6.99</p>
             </div>
         </div>
