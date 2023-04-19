@@ -1,0 +1,101 @@
+.btn-orange{
+    background: rgb(206, 80, 19);
+    margin-top: 5% !important;
+    margin-bottom: 5% !important;
+    color: white;
+}
+
+.btn-border-orange{
+    border-color: rgb(206, 80, 19);
+    margin-top: 5% !important;
+    margin-bottom: 5% !important;
+}
+
+.bg-orange{
+    height: 80px;
+    background: rgb(206, 80, 19);
+    color: white;
+    text-align: center;
+}
+
+.img-nav{
+    max-height: 80px;
+    max-width: 100px;
+}
+
+.icon-nav{
+    float: left;
+    margin: 2%;
+    text-align: center;
+    font-size: 1.5em;
+    padding-top: 8%;
+}
+
+.text-nav{
+    float: left;
+    margin: 0% 2%;
+    text-align: center;
+    padding-top: 5%;
+}
+
+.rounded-pill{
+    float: right;
+    margin-right: 4%;
+}
+
+.payment-box{
+    width: 25%;
+    margin: 1%;
+    margin-top: 2%;
+    float: left;
+    height: 70px;
+    border: 1px solid gray !important;
+    border-radius: 10%;
+    display: flex;
+    align-content: center;
+}
+
+.img-payment{
+    width: 60%;
+    height: auto;
+    max-height: 100%;
+    text-align: center;
+}
+
+.img-car{
+    width: 80px;
+    background: white;
+}
+
+.content-car{
+    margin: 4%;
+    text-align: center;
+    align-items: center;
+    width: 15%;
+}
+
+p.content-car{
+    padding-top:3%;
+}
+
+p.text-address{
+    margin:0;
+}
+
+.delivery-box{
+    width: 60%;
+    border-radius: 25%;
+    height: auto;
+    border: 1px solid rgb(206, 80, 19);
+    text-align: center;
+    padding: 1%;
+}
+
+.delivery-text{
+    margin-top: 20%;
+}
+
+.delivery-img{
+    width: 80px;
+    margin:10% 0%;
+}

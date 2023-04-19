@@ -1,0 +1,23 @@
+.btn-orange{
+    background: rgb(206, 80, 19);
+    margin-top: 5% !important;
+    margin-bottom: 10% !important;
+    color: white;
+}
+
+.form-group{
+    margin-top: 5% !important;
+    margin-bottom: 5% !important;
+}
+
+.form-control{
+    padding: 8% 8%;
+}
+
+.terms-text{
+    font-size: small;
+}
+
+.img-filter{
+    filter: invert(100%);
+}
