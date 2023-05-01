@@ -1,0 +1,24 @@
+{% extends 'Mainpage.html' %}
+
+{% block content %}
+    <h1>Shopping Cart</h1>
+    <ul>
+        {% for product in cart %}
+            <li>
+                {{ product[1] }} - ${{ '%.2f' | format(product[2]) }}
+                <form method="post" action="{{ url_for('remove_from_cart') }}" style="display:inline;">
+                    <input type="hidden" name="product_id" value="{{ product[0] }}">
+                    <button type="submit">Remove</button>
+                </form>
+            </li>
+        {% endfor %}
+        {% set total_price = 0 %}
+        {% for product in cart %}
+            {% set total_price = total_price + (product[2] * product[3]) %}
+        {% endfor %}
+        <p>Total price: ${{ '%.2f' | format(total_price) }}</p>
+
+    </ul>
+    <a href="{{ url_for('checkout', total_price=total_price) }}">Proceed to Checkout</a>
+
+{% endblock %}

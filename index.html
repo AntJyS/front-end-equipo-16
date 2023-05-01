@@ -1,0 +1,20 @@
+{% extends 'Mainpage.html' %}
+
+{% block content %}
+    <form id="add-to-cart-form" method="post" action="{{ url_for('add_to_cart') }}">
+        <div class="slider-container slider-container-2">
+            <div class="products-slider">    
+                {% for product in products %}
+                    <div class="product">
+                        <input type="checkbox" name="product" value="{{ product[0] }}">
+                        <input type="hidden" name="product-id" value="{{ product[0] }}">
+                        <img src="{{ product[3] }}" alt="Product {{ product[0] }}">
+                        <p class="product-name">{{ product[1] }}</p>
+                        <p class="product-price">${{ '%.2f' | format(product[2]) }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+            <button type="submit" class="slider-button slider-button-right">&#10095;</button>
+        </div>
+    </form>
+{% endblock %}
